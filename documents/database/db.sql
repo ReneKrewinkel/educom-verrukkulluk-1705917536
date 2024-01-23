@@ -225,9 +225,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`ID`, `user_name`, `password`, `email`, `afbeelding`) VALUES
-(1, 'Bob', 'test123', 'bob@test.com', ''),
-(2, 'Alex', 'test123', 'alex@test.com', ''),
-(3, 'Burger', 'king', 'burger@test.com', '');
+(1, 'Bob', 'test123', 'bob@test.com', 'https://www.azcentral.com/gcdn/presto/2020/06/12/PPHX/e7207da9-6fbe-467b-b63e-ac44e95db582-BobsBurgers_2019_KeyPoses_Bob_1.jpg?crop=3356,2517,x0,y720'),
+(2, 'Alex', 'test123', 'alex@test.com', 'https://i.pinimg.com/550x/18/b9/ff/18b9ffb2a8a791d50213a9d595c4dd52.jpg'),
+(3, 'Burger', 'king', 'burger@test.com', 'https://pics.craiyon.com/2023-09-13/87471edcf7524debb1740f76d9b2df04.webp');
 
 --
 -- Indexen voor geëxporteerde tabellen
