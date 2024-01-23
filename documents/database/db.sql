@@ -79,10 +79,10 @@ CREATE TABLE `gerecht` (
 --
 
 INSERT INTO `gerecht` (`ID`, `keuken_id`, `type_id`, `user_id`, `datum_toegevoegd`, `titel`, `korte_omschrijving`, `lange_omschrijving`, `afbeelding`) VALUES
-(1, 1, 6, 2, '2024-01-23 13:29:40', 'Chinese Kip', 'Kip met rijst', 'Kip met rijst en saus', 0),
-(2, 2, 6, 1, '2024-01-23 13:36:09', 'Big Whammy', 'Amerikaanse hamburger', 'Hamburger gemaakt volgens oud-Amerikaanse stijl', 0),
-(3, 4, 5, 3, '2024-01-23 13:37:54', 'Broccoli', 'roergebakken broccoli', 'langere omschrijving van roergebakken broccoli', 0),
-(4, 3, 7, 2, '2024-01-23 13:40:52', 'Gebakken garnaal', 'gebakken vietnamese garnaal', 'garnaal berijd volgens authentiek vietnamees recept', 0);
+(1, 1, 6, 2, '2024-01-23 13:29:40', 'Chinese Kip', 'Kip met rijst', 'Kip met rijst en saus', 'https://natashaskitchen.com/wp-content/uploads/2020/07/General-Tsos-Chicken-4.jpg'),
+(2, 2, 6, 1, '2024-01-23 13:36:09', 'Big Whammy', 'Amerikaanse hamburger', 'Hamburger gemaakt volgens oud-Amerikaanse stijl', 'https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/M6HASPARCZHYNN4XTUYT7H6PTE.jpg&w=1440'),
+(3, 4, 5, 3, '2024-01-23 13:37:54', 'Broccoli', 'roergebakken broccoli', 'langere omschrijving van roergebakken broccoli', 'https://pbs.twimg.com/media/BwerM_hCcAAbvca.jpg:large'),
+(4, 3, 7, 2, '2024-01-23 13:40:52', 'Gebakken garnaal', 'gebakken vietnamese garnaal', 'garnaal berijd volgens authentiek vietnamees recept', 'https://www.okokorecepten.nl/i/recepten/kookboeken/2008/uit-eten-in-barcelona/garnalen-knoflook-peterselie-500.jpg');
 
 -- --------------------------------------------------------
 
