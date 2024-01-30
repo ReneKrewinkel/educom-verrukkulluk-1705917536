@@ -6,27 +6,30 @@ require_once("lib/user.php");
 require_once("lib/keuken_type.php");
 require_once("lib/ingredient.php");
 require_once("lib/gerecht_info.php");
+require_once("lib/gerecht.php");
 
-try{
-/// INIT
-$db = new database();
-$art = new artikel($db->getConnection());
-$user = new user($db->getConnection());
-$keuken_type = new keuken_type ($db->getConnection());
-$ing = new ingredient ($db->getConnection());
-$gerecht_info = new gerecht_info ($db->getConnection());
+try {
+    /// INIT
+    $db = new database();
+    $art = new artikel($db->getConnection());
+    $user = new user($db->getConnection());
+    $keuken_type = new keuken_type($db->getConnection());
+    $ing = new ingredient($db->getConnection());
+    $gerecht_info = new gerecht_info($db->getConnection());
+    $gerecht = new gerecht($db->getConnection());
 
-/// VERWERK 
-$artikel = $art->selecteerArtikel(3);
-$gebruiker = $user->selecteerUser(1);
-$keukentype = $keuken_type->selecteerKeukenType(2);
-$ingredient = $ing->selecteerIngredient(3);
-$info = $gerecht_info->selecteerInfo(2, "B");
-$gerecht_info -> deleteFavorite(2,3);
+    /// VERWERK 
+    $artikel = $art->selecteerArtikel(3);
+    $gebruiker = $user->selecteerUser(1);
+    $keukentype = $keuken_type->selecteerKeukenType(2);
+    $ingredient = $ing->selecteerIngredient(3);
+    $info = $gerecht_info->selecteerInfo(1, "B");
+    // $gerecht_info->deleteFavorite(2, 3);
+    $gerecht = $gerecht->selecteerGerecht();
 
-/// RETURN
-echo "<pre>";
-print_r($info);
+    /// RETURN
+    echo "<pre>";
+    print_r($info);
 } catch (Exception $e) {
-    echo "Error" . $e ->getMessage();
+    echo "Error" . $e->getMessage();
 }
