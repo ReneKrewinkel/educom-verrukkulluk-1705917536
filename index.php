@@ -17,6 +17,7 @@ try {
     $ing = new ingredient($db->getConnection());
     $gerecht_info = new gerecht_info($db->getConnection());
     $gerecht = new gerecht($db->getConnection());
+    $favoriet = new gerecht($db->getConnection());
 
     /// VERWERK 
     $artikel = $art->selecteerArtikel(3);
@@ -26,9 +27,11 @@ try {
     $info = $gerecht_info->selecteerInfo(1, "B");
     // $gerecht_info->deleteFavorite(2, 3);
     $gerecht = $gerecht->selecteerGerecht();
+    $fav = $favoriet->isFavoriet(1, 4);
 
     /// RETURN
     echo "<pre>";
+    var_dump($fav);
     print_r($gerecht);
 } catch (Exception $e) {
     echo "Error" . $e->getMessage();

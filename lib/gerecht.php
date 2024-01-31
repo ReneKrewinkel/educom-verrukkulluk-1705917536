@@ -103,4 +103,13 @@ class gerecht
         }
         return ($recept);
     }
+
+    public function isFavoriet($user_id, $gerecht_id)
+    {
+        $sql = "SELECT COUNT(*) AS count FROM gerecht_info WHERE user_id = $user_id AND gerecht_id = $gerecht_id AND record_type = 'F'";
+        $result = mysqli_query($this->connection, $sql);
+        $fav = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+        return ($fav['count'] > 0);
+    }
 }
