@@ -8,23 +8,16 @@ class gerecht
     private $keuken_type;
     private $ingredient;
     private $gerecht_info;
-    private $artikel;
 
     public function __construct($connection)
     {
         $this->connection = $connection;
-        $this->artikel = new artikel($connection);
         $this->user = new user($connection);
         $this->keuken_type = new keuken_type($connection);
         $this->ingredient = new ingredient($connection);
         $this->gerecht_info = new gerecht_info($connection);
     }
 
-    private function selecteerArtikel($artikel_id)
-    {
-        $artikel = $this->artikel->selecteerArtikel($artikel_id);
-        return $artikel;
-    }
 
     private function selecteerUser($user_id)
     {
@@ -44,9 +37,9 @@ class gerecht
         return $ingredient;
     }
 
-    private function selecteerInfo($gerecht_info)
+    private function selecteerInfo($gerecht_id, $record_type)
     {
-        $gerecht_info = $this->gerecht_info->selecteerInfo($gerecht_info);
+        $gerecht_info = $this->gerecht_info->selecteerInfo($gerecht_id, $record_type);
         return $gerecht_info;
     }
 
@@ -67,6 +60,23 @@ class gerecht
             $type = $this->selecteerKeukenType($type_id);
             $user_id = $gerecht["user_id"];
             $user = $this->selecteerUser($user_id);
+            $gerecht_id = $gerecht["ID"];
+            $bereidingswijze = $this->selecteerInfo($gerecht_id, "B");
+            $opmerkingen = $this->selecteerInfo($gerecht_id, "O");
+            $waardering = $this->selecteerInfo($gerecht_id, "W");
+            $favoriet = $this->selecteerInfo($gerecht_id, "F");
+            $ingredienten = $this->selecteerIngredient($gerecht_id);
+            $totaalPrijs = 0;
+            $totalCalories = 0;
+
+            foreach ($ingredienten as $ingredient) {
+                $aantal = $ingredient['aantal'];
+                $prijs = $ingredient['prijs'];
+                $calories = $ingredient['calorieën'];
+                $ingredientPrijs = $aantal * $prijs;
+                $totalCalories += $calories;
+                $totaalPrijs += $ingredientPrijs;
+            }
 
             $recept[] = [
                 "ID" => $gerecht["ID"],
@@ -80,7 +90,15 @@ class gerecht
                 "afbeelding" => $gerecht["afbeelding"],
                 "keuken" => $keuken["omschrijving"],
                 "type" => $type["omschrijving"],
-                "user" => $user["user_name"]
+                "user" => $user["user_name"],
+                "profielfoto" => $user["afbeelding"],
+                "bereidingswijze" => $bereidingswijze,
+                "opmerkingen" => $opmerkingen,
+                "waarderingen" => $waardering,
+                "favoriet" => $favoriet,
+                "ingredienten" => $ingredienten,
+                "prijs" => $totaalPrijs,
+                "calorieën" => $totalCalories
             ];
         }
         return ($recept);

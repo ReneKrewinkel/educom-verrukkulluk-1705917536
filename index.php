@@ -29,7 +29,7 @@ try {
 
     /// RETURN
     echo "<pre>";
-    print_r($info);
+    print_r($gerecht);
 } catch (Exception $e) {
     echo "Error" . $e->getMessage();
 }
