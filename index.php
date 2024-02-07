@@ -1,5 +1,6 @@
 <?php
 
+require_once("./vendor/autoload.php");
 require_once("lib/database.php");
 require_once("lib/artikel.php");
 require_once("lib/user.php");
@@ -9,36 +10,50 @@ require_once("lib/gerecht_info.php");
 require_once("lib/gerecht.php");
 require_once("lib/boodschappenlijst.php");
 
+$loader = new \Twig\Loader\FilesystemLoader("./templates");
+
+$twig = new \Twig\Environment($loader, ["debug" => true]);
+$twig->addExtension(new \Twig\Extension\DebugExtension());
+
 try {
     /// INIT
     $db = new database();
-    $art = new artikel($db->getConnection());
-    $user = new user($db->getConnection());
-    $keuken_type = new keuken_type($db->getConnection());
-    $ing = new ingredient($db->getConnection());
-    $gerecht_info = new gerecht_info($db->getConnection());
     $gerecht = new gerecht($db->getConnection());
     $favoriet = new gerecht($db->getConnection());
     $boodschappenlijst = new boodschappen($db->getConnection());
+    $data = $gerecht->selecteerGerecht();
 
     /// VERWERK 
-    $artikel = $art->selecteerArtikel(3);
-    $gebruiker = $user->selecteerUser(1);
-    $keukentype = $keuken_type->selecteerKeukenType(2);
-    $ingredient = $ing->selecteerIngredient(3);
-    $info = $gerecht_info->selecteerInfo(1, "B");
     // $gerecht_info->deleteFavorite(2, 3);
-    $gerecht = $gerecht->selecteerGerecht();
-    $fav = $favoriet->isFavoriet(1, 4);
-    // $lijst = $boodschappenlijst->boodschappenToevoegen(4, 2);
-    $clear = $boodschappenlijst->clearLijst();
+    // $gerecht = $gerecht->selecteerGerecht();
+    // $fav = $favoriet->isFavoriet(1, 4);
+    // $lijst = $boodschappenlijst->boodschappenToevoegen(1, 1);
+    // $clear = $boodschappenlijst->clearLijst();
 
     /// RETURN
-    echo "<pre>";
-    print_r($clear);
-    // var_dump($fav);
-    // var_dump($lijst);
-    print_r($gerecht);
+    $gerecht_id = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "";
+    $action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
+
+    switch ($action) {
+
+        case "homepage": {
+                $data = $gerecht->selecteerGerecht();
+                $template = 'homepage.html.twig';
+                $title = 'homepage';
+                break;
+            }
+
+        case "detail": {
+                $data = $gerecht->selecteerGerecht($gerecht_id);
+                $template = 'detail.html.twig';
+                $title = "detail pagina";
+                break;
+            }
+    }
+
+    $template = $twig->load($template);
+
+    echo $template->render(["title" => $title, "data" => $data]);
 } catch (Exception $e) {
     echo "Error" . $e->getMessage();
 }

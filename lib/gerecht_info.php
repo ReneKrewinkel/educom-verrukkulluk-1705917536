@@ -63,6 +63,7 @@ class gerecht_info
             echo "Succesfully added to your favorites, " . $user["user_name"] . "!";
         }
     }
+    
     public function deleteFavorite($user_id, $gerecht_id)
     {
         $sql = "DELETE FROM gerecht_info WHERE user_id = $user_id AND gerecht_id= $gerecht_id AND record_type = 'F'";
