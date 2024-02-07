@@ -27,7 +27,7 @@ class boodschappen
         $result = mysqli_query($this->connection, $sql);
 
         while ($row = mysqli_fetch_array($result)) {
-            $boodschappen [] = $row;
+            $boodschappen[] = $row;
         }
 
         return $boodschappen;
@@ -54,8 +54,9 @@ class boodschappen
         $result = mysqli_query($this->connection, $sql);
 
         if ($result) {
-            echo "Succesfully added to your grocery list";
+            return true;
         }
+        return false;
     }
 
     public function artikelBijwerken($artikel_id, $user_id, $aantal)
@@ -64,8 +65,9 @@ class boodschappen
         $result = mysqli_query($this->connection, $sql);
 
         if ($result) {
-            echo "Succesfully updated your grocery list";
+            return true;
         }
+        return false;
     }
 
     public function boodschappenToevoegen($gerecht_id, $user_id)
