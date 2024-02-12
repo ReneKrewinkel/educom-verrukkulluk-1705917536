@@ -55,18 +55,16 @@
 					</div>
 				</div>
 			</div>
-		{% endfor %}
-	</div>
+		</div>
 
-	<div class="detailsbox" style="margin-top: 50px;">
-		{% for record in data %}
+		<div class="detailsbox" style="margin-top: 50px;">
 			<div class="detail-container">
 				<ul class="scrollable-list">
 					{% for ingr in record.ingredienten %}
-						<li>
-							<div class="detail-item">
-								<img src="{{ingr.afbeelding}}" style="height: 150px; width: 150px; object-fit:cover">
-							</div>
+						<li style="list-style-type: "{{ingr.foto}}";">
+							{# <div class="detail-item">
+								<img src="{{ingr.foto}}" style="height: 150px; width: 150px; object-fit:cover">
+							</div> #}
 
 							<div class="detail-text">
 

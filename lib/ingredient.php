@@ -40,7 +40,8 @@ class ingredient
                 "prijs" => $artikel["prijs"],
                 "verpakking" => $artikel["verpakking"],
                 "eenheid" => $artikel["eenheid"],
-                "calorieën" => $artikel["calories"]
+                "calorieën" => $artikel["calories"],
+                "foto" => $artikel["foto"]
             ];
         }
         return ($ing);
