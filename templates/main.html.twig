@@ -1,53 +1,91 @@
 <html lang="nl">
-<head>
+	<head>
 
-    <title>het is verrukkuluk! :: {{ TITEL }} </title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title>het is verrukkuluk! ::
+			{{ TITEL }}
+		</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/fonts.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/fontawesome.css" />
+		<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="assets/css/fonts.css"/>
+		<link rel="stylesheet" type="text/css" href="assets/css/fontawesome.css"/>
 
-    <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/main.css"/>
 
-    <script type="text/javascript" language="javascript" src="assets/jquery/jquery-3.5.1.js"></script>
-    <script type="text/javascript" language="javascript" src="assets/bootstrap/js/bootstrap.js"></script>
-
+		<script type="text/javascript" language="javascript" src="assets/jquery/jquery-3.5.1.js"></script>
+		<script type="text/javascript" language="javascript" src="assets/bootstrap/js/bootstrap.js"></script>
+	</head>
 </html>
 <body>
-<div class="container-fluid">
+	<div class="container-fluid">
+		<header>
+			<div class="row">
+				<div class="col-md-12">
+					<a href="index.php?action=homepage">
+						<img src="assets/img/logo-v2.png" alt="Logo">
+					</a>
+					{% block header %}{% endblock %}
+				</div>
+			</div>
+		</header>
+		<div class="row">
 
-    <div class="row">
-        <div class="col-md-12">
-        {% block header %}
-            
-        {% endblock %}   
-        </div>
-    </div>
+			<div class="col-md-4">
+				<div class="agenda">
+					<img src="assets/img/verrukkulluk-agenda.png" style="width: 50%; margin: 0 auto; margin-bottom: 30px; margin-top: 10px">
+					<div class="calendar">
+						Workshop Culinaire
+					</div>
+					<span class="calendar-text">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
+					<div class="calendar">
+						Workshop Culinaire
+					</div>
+					<span class="calendar-text">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
+					<div class="calendar">
+						Workshop Culinaire
+					</div>
+					<span class="calendar-text">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
+					<div class="calendar">
+						Workshop Culinaire
+					</div>
+					<span class="calendar-text">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
+				</div>
 
-    <div class="row">
-        <div class="col-md-3">
-            <h2>Agenda</h2>
-            <i class="fa fa-calendar"></i> FontAwesome <a href="https://fontawesome.com/icons?d=gallery&m=free">Documentation</a><br>
-            <i class="fa fa-file-pdf"></i><a href="https://www.layoutit.com/build">Layout-it</a>
+				<div class="login">
+					<img src="assets/img/verrukkulluk-login.png" class="img-fluid" style="width: 35%; margin: 0 auto; margin-top: 10px">
+					<span style="margin-left: 50px">Email</span>
+					<input type="text" class="credentials">
+					<span style="margin-left: 50px">Wachtwoord</span>
+					<input type="text" class="credentials">
+					<button type="submit" class="login-button">
+						Login
+					</button>
+				</div>
+			</div>
 
+			<div class="col-md-8"> {%  block content %}{%  endblock %}
+				</div>
+			</div>
 
-        </div>
-        <div class="col-md-9">
-            <h2>Content</h2>
-            {%  block content %}
-            {%  endblock %}
-        </div>
-    </div>
+			<footer>
+				<div class="row">
+					<div class="col-md-2">
+						<img src="assets/img/verrukkulluk-pay-off.png" style="width: 50%; margin-left: 80px ; margin-top: 30px;">
+					</div>
+					<div class="col-md-10">
+						<img src="assets/img/verrukkulluk-contact.png" style="width: 15%; margin-top: 50px; margin-bottom: 40px">
+						<div class="contact">Verrukkulluk.nl</div>
+						<div class="contact">Poststraat 2b</div>
+						<div class="contact">Sittard</div>
+						<div class="contact" style="margin-bottom: 75px">info@verrukkulluk.nl</div>
+					</div>
+				</div>
+			</footer>
 
+		</div>
 
-    <div class="row">
-        <div class="col-md-12">
-            <h1>Footer</h1>
-        </div>
-    </div>
-
-
-</div>
-
-</body>
+	</body>

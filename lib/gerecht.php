@@ -63,11 +63,12 @@ class gerecht
             $gerecht_id = $gerecht["ID"];
             $bereidingswijze = $this->selecteerInfo($gerecht_id, "B");
             $opmerkingen = $this->selecteerInfo($gerecht_id, "O");
-            $waardering = $this->selecteerInfo($gerecht_id, "W");
+            $waarderingen = $this->selecteerInfo($gerecht_id, "W");
             $favoriet = $this->selecteerInfo($gerecht_id, "F");
             $ingredienten = $this->selecteerIngredient($gerecht_id);
             $totaalPrijs = 0;
             $totalCalories = 0;
+            $waarde = 0;
 
             foreach ($ingredienten as $ingredient) {
                 $aantal = $ingredient['aantal'];
@@ -76,6 +77,14 @@ class gerecht
                 $ingredientPrijs = $aantal * $prijs;
                 $totalCalories += $calories;
                 $totaalPrijs += $ingredientPrijs;
+            }
+
+            foreach ($waarderingen as $waardering) {
+                $aantal = count($waarderingen);
+                $waarde += $waardering['nummeriekveld'];
+                if ($aantal > 0) {
+                    $rating = $waarde / $aantal;
+                }
             }
 
             $recept[] = [
@@ -94,11 +103,12 @@ class gerecht
                 "profielfoto" => $user["afbeelding"],
                 "bereidingswijze" => $bereidingswijze,
                 "opmerkingen" => $opmerkingen,
-                "waarderingen" => $waardering,
+                "waarderingen" => $waarderingen,
                 "favoriet" => $favoriet,
                 "ingredienten" => $ingredienten,
                 "prijs" => $totaalPrijs,
-                "calorieën" => $totalCalories
+                "calorieën" => $totalCalories,
+                "rating" => $rating
             ];
         }
         return ($recept);
