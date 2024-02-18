@@ -32,7 +32,21 @@ try {
 
     /// RETURN
     $gerecht_id = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "";
+    $user_id = isset($_GET["user_id"]) ? $_GET["user_id"] : "";
     $action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
+
+    if (isset($_POST['heart_clicked'])) {
+        $user_id= 1;
+        $gerecht_id= $_POST['gerecht_id'];
+        $gerecht_info= new gerecht_info($db->getConnection());
+
+        if ($gerecht->isFavoriet($user_id, $gerecht_id)) {
+            $gerecht_info->deleteFavorite($user_id, $gerecht_id);
+        }
+        else {
+            $gerecht_info->addFavorite($user_id, $gerecht_id);
+        }
+    }
 
     switch ($action) {
 
@@ -49,6 +63,13 @@ try {
                 $title = "detail pagina";
                 break;
             }
+
+        case "lijst": {
+                $data = $boodschappenlijst -> ophalenBoodschappen($user_id);
+                $template = "boodschappenlijst.html.twig";
+                $title = "boodschappenlijst";
+                break;
+        }
     }
 
     $template = $twig->load($template);

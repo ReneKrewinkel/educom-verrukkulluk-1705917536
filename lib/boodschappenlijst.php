@@ -61,7 +61,7 @@ class boodschappen
 
     public function artikelBijwerken($artikel_id, $user_id, $aantal)
     {
-        $sql = "UPDATE boodschappenlijst SET aantal = $aantal WHERE artikel_id= $artikel_id AND user_id = $user_id";
+        $sql = "UPDATE boodschappenlijst SET aantal = $aantal + 1 WHERE artikel_id= $artikel_id AND user_id = $user_id";
         $result = mysqli_query($this->connection, $sql);
 
         if ($result) {
