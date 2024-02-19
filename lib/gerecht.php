@@ -97,7 +97,6 @@ class gerecht
                 "korte_omschrijving" => $gerecht["korte_omschrijving"],
                 "lange_omschrijving" => $gerecht["lange_omschrijving"],
                 "afbeelding" => $gerecht["afbeelding"],
-                "foto" => $gerecht["foto"],
                 "keuken" => $keuken["omschrijving"],
                 "type" => $type["omschrijving"],
                 "user" => $user["user_name"],
@@ -124,4 +123,5 @@ class gerecht
 
         return ($fav['COUNT(*)'] > 0);
     }
+    
 }

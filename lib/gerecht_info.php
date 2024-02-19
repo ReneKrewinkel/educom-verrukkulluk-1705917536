@@ -39,7 +39,8 @@ class gerecht_info
                 $user = $this->selecteerUser($user_id);
                 $userInfo = [
                     "user_id" => $row["user_id"],
-                    "user_name" => $user["user_name"]
+                    "user_name" => $user["user_name"],
+                    "afbeelding" => $user["afbeelding"]
                 ];
                 $info[] = array_merge($gerechtInfo, $userInfo);
             } else {
