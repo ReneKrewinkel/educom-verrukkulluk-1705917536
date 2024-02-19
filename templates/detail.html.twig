@@ -57,25 +57,26 @@
 			</div>
 		</div>
 
-		<div class="detailsbox" style="margin-top: 50px;">
-			<div class="detail-container">
+		<div class="detailsbox" style="margin-top: 50px; display: grid;">
+			<div class="detail-container" style="display: grid;">
 				<ul class="scrollable-list">
 					{% for ingr in record.ingredienten %}
-						<li style="list-style-type: "{{ingr.foto}}";">
-							{# <div class="detail-item">
-								<img src="{{ingr.foto}}" style="height: 150px; width: 150px; object-fit:cover">
-							</div> #}
+						<li style="grid-template-columns: 1fr 2fr;">
+							<div class="col-md-4">
+								<img src={{ingr.foto}} style="height: 150px; width: 150px; object-fit:cover" alt="Image">
+							</div>
 
-							<div class="detail-text">
-
-								<h3 style="color: #6e8722; font-size: 50px">{{ ingr.naam }}</h3>
-								<div style="max-width: 75%;">
-									{{ingr.omschrijving}}
-								</div>
-								<h6 class="hoeveelheid green" style="margin-left: 0px;">
-									{{(ingr.verpakking * ingr.aantal)}}
-									{{ingr.eenheid}}
-								</h6>
+							<div class="col-md-8">
+								<span>
+									<h3 style="color: #6e8722; font-size: 50px">{{ ingr.naam }}</h3>
+									<div style="max-width: 75%;">
+										{{ingr.omschrijving}}
+									</div>
+									<h6 class="hoeveelheid green" style="margin-left: 0px;">
+										{{(ingr.verpakking * ingr.aantal)}}
+										{{ingr.eenheid}}
+									</h6>
+								</span>
 							</div>
 						</li>
 					{% endfor %}
