@@ -323,7 +323,7 @@ body {
   font-size: 30px;
   vertical-align: middle;
   margin-left: 20px;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 header {
@@ -401,4 +401,42 @@ footer {
   display: inline-block;
   margin-top: -50px;
   font-weight: bold;
+}
+
+.total-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 5px;
+  display: flex;
+}
+
+.total {
+  bottom: 0;
+  font-size: 75px;
+  font-family: var(--heading);
+  color: #b31714;
+  display: inline-block;
+  margin-top: 250px;
+  margin-bottom: 20px;
+  margin-left: 50px;
+}
+
+.getal {
+  bottom: 0;
+  font-size: 30px;
+  display: flex;
+  margin-top: 250px;
+  margin-bottom: 20px;
+  margin-left: 600px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.trash::before{
+  content: "\1F5D1";
+  cursor: pointer;
+  color: #b31714;
+  font-size: 50px;
+  margin-left: 20px;
 }

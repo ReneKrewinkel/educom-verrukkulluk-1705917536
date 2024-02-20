@@ -66,6 +66,49 @@ $(document).ready(function () {
 			}
 		})
 	})
+	$(".clearAll").on('click', function() {
+		$.ajax({
+			method: "POST",
+			url: "index.php",
+			data: {
+				clearAll: true,
+			},
+			success: function(response) {
+				location.reload()
+			}
+		})
+	})
+
+	$(".clearArtikel").on('click', function() {
+		var artikel_id = $(this).data("artikel_id");
+		$.ajax({
+			method: "POST",
+			url: "index.php",
+			data: {
+				clearArtikel: true,
+				artikel_id: artikel_id
+			},
+			success: function(response){
+				location.reload()
+			}
+		})
+	})
+
+	$(".toevoegen a").on('click', function() {
+		event.preventDefault();
+		var gerecht_id = $(this).data("gerecht_id");
+		$.ajax({
+			method: "POST",
+			url: "index.php",
+			data: {
+				toevoegen: true,
+				gerecht_id: gerecht_id,
+			},
+			success: function(response){
+				window.location.href= "index.php?action=lijst&user_id=1"
+			}
+		})
+	})
 });
 </script>
 

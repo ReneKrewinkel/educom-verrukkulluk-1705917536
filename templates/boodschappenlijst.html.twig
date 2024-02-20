@@ -2,6 +2,46 @@
 
 {% block header %}{% endblock %}
 {% block content %}
-
-
+	<div class="detailsbox">
+		<h1 class="title" style="color: #6e8722; margin-bottom: 50px; font-size: 70px; margin-left: 80px; margin-top: 20px;">Boodschappen</h1>
+		<div class "detail-container">
+			<ul class="scrollable-list" style="max-height: 600px">
+				{% set totalPrice = 0 %}
+				{% for record in data %}
+					<li class="container" style="justify-content: flex-start; margin-bottom: 75px;">
+						<div class="text-container" style="padding-left: 0px;">
+							<img src="{{record.foto}}" style="height: 120px; width: 120px; object-fit:cover; border-radius: 50%; margin-right: 20px">
+						</div>
+						<div class="text-container" style="max-width: 50%">
+							<div class="detail-item>">
+								<h3 style="color: #6e8722; font-size: 40px; margin-bottom: 20px;">{{ record.naam }}</h3>
+								<div style="max-width: 75%">
+									{{record.omschrijving}}
+								</div>
+							</div>
+						</div>
+						<div class="text-container">
+							<div style="margin-left: 0px; margin-right: 50px; font-size: 20px">
+								<div class="box" style="border: 1px solid #000; padding: 5px; width: 100px;display: flex; justify-content: center">
+									{{record.aantal}}
+								</div>
+							</div>
+							<div class="euro" style="font-size: 25px;">
+								{{(record.prijs * record.aantal)}}
+							</div>
+						</div>
+						<div class="text-container" style="margin-left: 20px">
+							<div class="trash clearArtikel" data-artikel_id={{record.artikel_id}}></div>
+						</div>
+						{% set totalPrice = totalPrice + (record.prijs * record.aantal) %}
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div class="total-container">
+			<div class="total">Totaal</div>
+			<div class="getal euro">{{totalPrice}}</div>
+			<div class="trash clearAll" style="margin-top: 270px; margin-left: 100px"></div>
+		</div>
+	</div>
 {% endblock %}

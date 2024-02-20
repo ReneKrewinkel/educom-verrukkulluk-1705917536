@@ -25,11 +25,7 @@ try {
     $gerecht_info= new gerecht_info($db->getConnection());
 
     /// VERWERK 
-    // $gerecht_info->deleteFavorite(2, 3);
-    // $gerecht = $gerecht->selecteerGerecht();
-    // $fav = $favoriet->isFavoriet(1, 4);
     // $lijst = $boodschappenlijst->boodschappenToevoegen(1, 1);
-    // $clear = $boodschappenlijst->clearLijst();
 
     /// RETURN
     $gerecht_id = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "";
@@ -56,6 +52,20 @@ try {
         $gerecht_info->addRating($gerecht_id, $nummeriekveld);
     }
 
+    if (isset($_POST['clearAll'])) {
+        $boodschappenlijst->clearLijst();
+    }
+
+    if (isset($_POST['clearArtikel'])) {
+        $artikel_id = $_POST['artikel_id'];
+        $boodschappenlijst->clearArtikel($artikel_id);
+    }
+
+    if (isset($_POST['toevoegen'])) {
+        $user_id= 1;
+        $gerecht_id= $_POST['gerecht_id'];
+        $boodschappenlijst->boodschappenToevoegen($gerecht_id, $user_id);
+    }
     switch ($action) {
 
         case "homepage": {
