@@ -64,7 +64,7 @@ class gerecht_info
             echo "Succesfully added to your favorites, " . $user["user_name"] . "!";
         }
     }
-    
+
     public function deleteFavorite($user_id, $gerecht_id)
     {
         $sql = "DELETE FROM gerecht_info WHERE user_id = $user_id AND gerecht_id= $gerecht_id AND record_type = 'F'";
@@ -73,6 +73,20 @@ class gerecht_info
         if ($result) {
             $user = $this->selecteerUser($user_id);
             echo "Succesfully removed from favorites, " . $user["user_name"] . "!";
+        }
+    }
+
+    public function addRating($gerecht_id, $nummeriekveld)
+    {
+        $record_type = 'W';
+
+        $sql = "INSERT INTO gerecht_info (gerecht_id, record_type, nummeriekveld)
+        VALUES ($gerecht_id, '$record_type', $nummeriekveld)";
+
+        $result = mysqli_query($this->connection, $sql);
+
+        if ($result) {
+            echo "Rated " . $nummeriekveld . " stars!";
         }
     }
 }

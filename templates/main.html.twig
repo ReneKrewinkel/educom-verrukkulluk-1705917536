@@ -21,26 +21,53 @@ $(document).ready(function () {
         $(this).addClass('active');
     });
 
-    $("#heart").click(function () {
+    $("#heart").on('click',(function () {
 		var gerecht_id= $(this).data("gerecht_id");
 
 		$.ajax({
-			type: "POST",
-			url: "lib/gerecht_info.php",
+			method: "POST",
+			url: "index.php",
 			data:{
 				heart_clicked: true,
 				gerecht_id: gerecht_id
 			},
-			succes: function(response) {
-				console.log(response);
+			success: function(response) {
+				 if (response.slice(0,30).includes("added")) {
+                    $("#heart").html("&#x2764;");
+                } else {
+                    $("#heart").html("&#x2661;");
+                }
 			}
 		});
-    });
+    }));
+
+	$('.star').on('click',function() {
+		var nummeriekveld = $(this).data('value')
+		var gerecht_id= $(this).data("gerecht_id")
+
+		$.ajax({
+			method: "POST",
+			url: "index.php",
+			data: {
+				star_clicked: true,
+				gerecht_id: gerecht_id,
+				nummeriekveld: nummeriekveld
+			},
+			success: function(response) {
+			}
+		});
+
+		$(".star").removeClass('star-clicked').addClass('star')
+
+		$(".star").each( (index, elem) => {
+			const itemValue = $(elem).data('value')
+			if (itemValue <= nummeriekveld) {
+				$(elem).addClass('star-clicked').removeClass('star')
+			}
+		})
+	})
 });
-
-
 </script>
-
 
 	</head>
 </html>

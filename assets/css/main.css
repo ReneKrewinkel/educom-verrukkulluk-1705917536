@@ -338,9 +338,35 @@ footer {
   margin-top: 50px;
 }
 
-.star {
+.star::before {
+  content: "\2606";
   color: #fca01f;
   font-size: 30px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.star-clicked::before,
+.star:hover::before {
+  content: "\2605";
+  color: #fca01f;
+  font-size: 30px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.empty-star::before {
+  content: "\2606";
+  color: #fca01f;
+  font-size: 30px;
+  display: inline-block;
+}
+
+.filled-star::before {
+  content: "\2605";
+  color: #fca01f;
+  font-size: 30px;
+  display: inline-block;
 }
 
 .empty-heart,

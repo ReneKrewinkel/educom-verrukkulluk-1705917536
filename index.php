@@ -22,6 +22,7 @@ try {
     $favoriet = new gerecht($db->getConnection());
     $boodschappenlijst = new boodschappen($db->getConnection());
     $data = $gerecht->selecteerGerecht();
+    $gerecht_info= new gerecht_info($db->getConnection());
 
     /// VERWERK 
     // $gerecht_info->deleteFavorite(2, 3);
@@ -36,22 +37,24 @@ try {
     $action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
 
     if (isset($_POST['heart_clicked'])) {
-        error_log("Heart Clicked - Gerecht ID: " . $_POST['gerecht_id']);
     
         $user_id= 1;
         $gerecht_id= $_POST['gerecht_id'];
-        $gerecht_info= new gerecht_info($db->getConnection());
     
         if ($gerecht->isFavoriet($user_id, $gerecht_id)) {
             $gerecht_info->deleteFavorite($user_id, $gerecht_id);
-            error_log("Deleted favorite: Gerecht ID: " . $gerecht_id);
         }
         else {
             $gerecht_info->addFavorite($user_id, $gerecht_id);
-            error_log("Added favorite: Gerecht ID: " . $gerecht_id);
         }
     }
-    
+
+    if (isset($_POST['star_clicked'])) {
+
+        $gerecht_id= $_POST['gerecht_id'];
+        $nummeriekveld = $_POST['nummeriekveld'];
+        $gerecht_info->addRating($gerecht_id, $nummeriekveld);
+    }
 
     switch ($action) {
 
@@ -75,6 +78,7 @@ try {
                 $title = "boodschappenlijst";
                 break;
         }
+
     }
 
     $template = $twig->load($template);

@@ -83,7 +83,7 @@ class gerecht
                 $aantal = count($waarderingen);
                 $waarde += $waardering['nummeriekveld'];
                 if ($aantal > 0) {
-                    $rating = $waarde / $aantal;
+                    $rating = round($waarde / $aantal);
                 }
             }
 

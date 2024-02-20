@@ -18,11 +18,13 @@
 						{{record.titel}}
 					</h2>
 					<div class="titlecontainer">
-						<span class="star" data-value="1">☆</span>
-						<span class="star" data-value="2">☆</span>
-						<span class="star" data-value="3">☆</span>
-						<span class="star" data-value="4">☆</span>
-						<span class="star" data-value="5">☆</span>
+						{% for i in range (1,5)%}
+							{% if i <= record.rating %}
+								<span class="filled-star" data-value="{{i}}"></span>
+							{% else %}
+								<span class="empty-star" data-value="{{i}}"></span>
+							{% endif %}
+						{% endfor %}
 					</div>
 				</div>
 
@@ -58,6 +60,7 @@
 	{# Dump #}
 	<pre>
         
-       </pre> {# {{ dump(data) }} #}
+       </pre>
+	{# {{ dump(data) }} #}
 
 {% endblock %}
