@@ -14,177 +14,106 @@
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script>
-$(document).ready(function () {
-    $('.nav-link').on('click', function () {
-        $('.nav-link').removeClass('active');
-        $(this).addClass('active');
-    });
+		<script src="script.js"></script>
 
-    $("#heart").on('click',(function () {
-		var gerecht_id= $(this).data("gerecht_id");
-
-		$.ajax({
-			method: "POST",
-			url: "index.php",
-			data:{
-				heart_clicked: true,
-				gerecht_id: gerecht_id
-			},
-			success: function(response) {
-				 if (response.slice(0,30).includes("added")) {
-                    $("#heart").html("&#x2764;");
-                } else {
-                    $("#heart").html("&#x2661;");
-                }
-			}
-		});
-    }));
-
-	$('.star').on('click',function() {
-		var nummeriekveld = $(this).data('value')
-		var gerecht_id= $(this).data("gerecht_id")
-
-		$.ajax({
-			method: "POST",
-			url: "index.php",
-			data: {
-				star_clicked: true,
-				gerecht_id: gerecht_id,
-				nummeriekveld: nummeriekveld
-			},
-			success: function(response) {
-			}
-		});
-
-		$(".star").removeClass('star-clicked').addClass('star')
-
-		$(".star").each( (index, elem) => {
-			const itemValue = $(elem).data('value')
-			if (itemValue <= nummeriekveld) {
-				$(elem).addClass('star-clicked').removeClass('star')
-			}
-		})
-	})
-	$(".clearAll").on('click', function() {
-		$.ajax({
-			method: "POST",
-			url: "index.php",
-			data: {
-				clearAll: true,
-			},
-			success: function(response) {
-				location.reload()
-			}
-		})
-	})
-
-	$(".clearArtikel").on('click', function() {
-		var artikel_id = $(this).data("artikel_id");
-		$.ajax({
-			method: "POST",
-			url: "index.php",
-			data: {
-				clearArtikel: true,
-				artikel_id: artikel_id
-			},
-			success: function(response){
-				location.reload()
-			}
-		})
-	})
-
-	$(".toevoegen a").on('click', function() {
-		event.preventDefault();
-		var gerecht_id = $(this).data("gerecht_id");
-		$.ajax({
-			method: "POST",
-			url: "index.php",
-			data: {
-				toevoegen: true,
-				gerecht_id: gerecht_id,
-			},
-			success: function(response){
-				window.location.href= "index.php?action=lijst&user_id=1"
-			}
-		})
-	})
-});
-</script>
 
 	</head>
 </html>
 <body>
-	<div class="container-fluid">
-		<header>
-			<div class="row">
-				<div class="col-md-12">
-					<a href="index.php?action=homepage">
-						<img src="assets/img/logo-v2.png" alt="Logo">
-					</a>
-					{% block header %}{% endblock %}
-				</div>
-			</div>
-		</header>
+	<div class="container-fluid"> {% block header %}{% endblock %}
+
 		<div class="row">
-
-			<div class="col-md-4">
-				<div class="agenda">
-					<img src="assets/img/verrukkulluk-agenda.png" style="width: 50%; margin: 0 auto; margin-bottom: 30px; margin-top: 10px">
-					<div class="calendar">
-						Workshop Culinaire
-					</div>
-					<span class="calendar-text">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
-					<div class="calendar">
-						Workshop Culinaire
-					</div>
-					<span class="calendar-text">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
-					<div class="calendar">
-						Workshop Culinaire
-					</div>
-					<span class="calendar-text">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
-					<div class="calendar">
-						Workshop Culinaire
-					</div>
-					<span class="calendar-text">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
+			<div class="col-md-9">
+				<a href="index.php?action=homepage">
+					<img src="assets/img/logo-v2.png" alt="Logo">
+				</a>
+			</div>
+			<div class="col-md-3">
+				<div class="search-box">
+					<input type="text" size="30" autocomplete="off" placeholder="Zoeken...">
+					<div class="result"></div>
 				</div>
+				<div class="menu">
+					<div class="menu-trigger" onclick="toggleDropdown()">
+						<div class="bar"></div>
+						<div class="bar"></div>
+						<div class="bar"></div>
+						<div class="dropdown">
+							<div class="col-md-3">
+								<a href="index.php?action=homepage">
+									<img src="assets/img/logo-v2.png" alt="Logo">
+								</a>
+							</div>
+							<div class- "col-md-9" style="font-family:'pretty_lilyregular'; color:#b31714 ">
+								<span style="margin-left: 400px; font-size: 52px">
+									Mijn Favorieten</span>
 
-				<div class="login">
-					<img src="assets/img/verrukkulluk-login.png" class="img-fluid" style="width: 35%; margin: 0 auto; margin-top: 10px">
-					<span style="margin-left: 50px">Email</span>
-					<input type="text" class="credentials">
-					<span style="margin-left: 50px">Wachtwoord</span>
-					<input type="text" class="credentials">
-					<button type="submit" class="login-button">
-						Login
-					</button>
+								<a href="index.php?action=lijst&user_id=1" style="text-decoration: none; color: inherit;">
+									<span style="margin-left: 200px; font-size: 52px">
+										Mijn Boodschappen
+									</span>
+								</a>
+							</div>
+
+						</div>
+					</div>
 				</div>
 			</div>
-
-			<div class="col-md-8"> {%  block content %}{%  endblock %}
-				</div>
-			</div>
-
-			<footer>
-				<div class="row">
-					<div class="col-md-2">
-						<img src="assets/img/verrukkulluk-pay-off.png" style="width: 50%; margin-left: 80px ; margin-top: 30px;">
-					</div>
-					<div class="col-md-10">
-						<img src="assets/img/verrukkulluk-contact.png" style="width: 15%; margin-top: 50px; margin-bottom: 40px">
-						<div class="contact">Verrukkulluk.nl</div>
-						<div class="contact">Poststraat 2b</div>
-						<div class="contact">Sittard</div>
-						<div class="contact" style="margin-bottom: 75px">info@verrukkulluk.nl</div>
-					</div>
-				</div>
-			</footer>
-
 		</div>
+	</div>
+</body></header><div class="row">
+<div class="col-md-4">
+	<div class="agenda">
+		<img src="assets/img/verrukkulluk-agenda.png" style="width: 50%; margin: 0 auto; margin-bottom: 30px; margin-top: 10px">
+		<div class="calendar">
+			Workshop Culinaire
+		</div>
+		<span class="calendar-text">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
+		<div class="calendar">
+			Workshop Culinaire
+		</div>
+		<span class="calendar-text">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
+		<div class="calendar">
+			Workshop Culinaire
+		</div>
+		<span class="calendar-text">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
+		<div class="calendar">
+			Workshop Culinaire
+		</div>
+		<span class="calendar-text">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
+	</div>
 
+	<div class="login">
+		<img src="assets/img/verrukkulluk-login.png" class="img-fluid" style="width: 35%; margin: 0 auto; margin-top: 10px">
+		<span style="margin-left: 50px">Email</span>
+		<input type="text" class="credentials">
+		<span style="margin-left: 50px">Wachtwoord</span>
+		<input type="text" class="credentials">
+		<button type="submit" class="login-button">
+			Login
+		</button>
+	</div>
+</div>
 
-	</body>
+<div class="col-md-8"> {%  block content %}{%  endblock %}
+	</div>
+</div>
+
+<footer>
+	<div class="row">
+		<div class="col-md-2">
+			<img src="assets/img/verrukkulluk-pay-off.png" style="width: 50%; margin-left: 80px ; margin-top: 30px;">
+		</div>
+		<div class="col-md-10">
+			<img src="assets/img/verrukkulluk-contact.png" style="width: 15%; margin-top: 50px; margin-bottom: 40px">
+			<div class="contact">Verrukkulluk.nl</div>
+			<div class="contact">Poststraat 2b</div>
+			<div class="contact">Sittard</div>
+			<div class="contact" style="margin-bottom: 75px">info@verrukkulluk.nl</div>
+		</div>
+	</div>
+</footer></div></body>

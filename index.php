@@ -9,6 +9,7 @@ require_once("lib/ingredient.php");
 require_once("lib/gerecht_info.php");
 require_once("lib/gerecht.php");
 require_once("lib/boodschappenlijst.php");
+require_once("lib/livesearch.php");
 
 $loader = new \Twig\Loader\FilesystemLoader("./templates");
 
@@ -22,10 +23,9 @@ try {
     $favoriet = new gerecht($db->getConnection());
     $boodschappenlijst = new boodschappen($db->getConnection());
     $data = $gerecht->selecteerGerecht();
-    $gerecht_info= new gerecht_info($db->getConnection());
+    $gerecht_info = new gerecht_info($db->getConnection());
 
     /// VERWERK 
-    // $lijst = $boodschappenlijst->boodschappenToevoegen(1, 1);
 
     /// RETURN
     $gerecht_id = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "";
@@ -33,21 +33,20 @@ try {
     $action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
 
     if (isset($_POST['heart_clicked'])) {
-    
-        $user_id= 1;
-        $gerecht_id= $_POST['gerecht_id'];
-    
+
+        $user_id = 1;
+        $gerecht_id = $_POST['gerecht_id'];
+
         if ($gerecht->isFavoriet($user_id, $gerecht_id)) {
             $gerecht_info->deleteFavorite($user_id, $gerecht_id);
-        }
-        else {
+        } else {
             $gerecht_info->addFavorite($user_id, $gerecht_id);
         }
     }
 
     if (isset($_POST['star_clicked'])) {
 
-        $gerecht_id= $_POST['gerecht_id'];
+        $gerecht_id = $_POST['gerecht_id'];
         $nummeriekveld = $_POST['nummeriekveld'];
         $gerecht_info->addRating($gerecht_id, $nummeriekveld);
     }
@@ -62,10 +61,11 @@ try {
     }
 
     if (isset($_POST['toevoegen'])) {
-        $user_id= 1;
-        $gerecht_id= $_POST['gerecht_id'];
+        $user_id = 1;
+        $gerecht_id = $_POST['gerecht_id'];
         $boodschappenlijst->boodschappenToevoegen($gerecht_id, $user_id);
     }
+
     switch ($action) {
 
         case "homepage": {
@@ -83,12 +83,11 @@ try {
             }
 
         case "lijst": {
-                $data = $boodschappenlijst -> ophalenBoodschappen($user_id);
+                $data = $boodschappenlijst->ophalenBoodschappen($user_id);
                 $template = "boodschappenlijst.html.twig";
                 $title = "boodschappenlijst";
                 break;
-        }
-
+            }
     }
 
     $template = $twig->load($template);
