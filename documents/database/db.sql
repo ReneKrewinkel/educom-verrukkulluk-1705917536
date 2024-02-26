@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 23 jan 2024 om 15:20
+-- Gegenereerd op: 23 feb 2024 om 13:22
 -- Serverversie: 10.4.32-MariaDB
 -- PHP-versie: 8.2.12
 
@@ -33,28 +33,59 @@ CREATE TABLE `artikel` (
   `omschrijving` varchar(255) NOT NULL,
   `prijs` int(255) NOT NULL,
   `verpakking` varchar(255) NOT NULL,
-  `eenheid` varchar(255) NOT NULL
+  `eenheid` varchar(255) NOT NULL,
+  `calories` int(255) NOT NULL,
+  `foto` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `artikel`
 --
 
-INSERT INTO `artikel` (`ID`, `naam`, `omschrijving`, `prijs`, `verpakking`, `eenheid`) VALUES
-(1, 'kip', 'bok bok bok', 5, '1', 'kg'),
-(2, 'rijst', 'korrels', 40, '20', 'kg'),
-(3, 'ei', 'ei van een kip', 3, '12', 'stuks'),
-(4, 'spaghetti', 'pasta', 2, '500', 'gram'),
-(5, 'zonnebloem olie', 'olie van zonnebloem', 10, '1.5', 'liter'),
-(6, 'zout', 'uit de zee', 10, '500', 'gram'),
-(7, 'peper', '4 seizoenspeper', 10, '100', 'gram'),
-(8, 'broccoli', 'groente', 5, '1', 'stuk'),
-(9, 'ui', 'groente', 5, '3', 'stuk'),
-(10, 'knoflook', 'groente', 3, '5', 'stuk'),
-(11, 'saus', 'veelzijdige saus', 10, '1', 'liter'),
-(12, 'broodjes', 'broodjes voor hamburger', 5, '4', 'stuks'),
-(13, 'hamburger', 'hamburger voor hamburger', 2, '100', 'gram'),
-(14, 'garnalen', 'garnalen uit de oceaan', 30, '1', 'kg');
+INSERT INTO `artikel` (`ID`, `naam`, `omschrijving`, `prijs`, `verpakking`, `eenheid`, `calories`, `foto`) VALUES
+(1, 'Kipfilet', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 5, '1', 'kg', 100, 'https://demarktpoelier.nl/wp-content/uploads/2021/10/kipfilet_1200x800-600x400.jpg'),
+(2, 'Rijst', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 40, '20', 'kg', 150, 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Thai_jasmine_rice_uncooked.jpg/200px-Thai_jasmine_rice_uncooked.jpg'),
+(3, 'Ei', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 3, '12', 'stuks', 20, 'https://i.pinimg.com/originals/a3/74/5a/a3745a29204139333bfcaf98c16cb25d.png'),
+(4, 'Spaghetti', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 2, '500', 'gram', 150, 'https://i.pinimg.com/originals/a3/74/5a/a3745a29204139333bfcaf98c16cb25d.png'),
+(5, 'Zonnebloem olie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 10, '1.5', 'liter', 200, 'https://static.ah.nl/dam/product/AHI_43545239373335363131?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary'),
+(6, 'Zout', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 10, '500', 'gram', 2, 'https://www.fit.nl/wp-content/uploads/2018/12/zout-per-dag.jpg'),
+(7, 'Peper', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 10, '100', 'gram', 2, 'https://kruidenbestellen.com/bestanden/artikellen/175/groot/zwarte-peper-gemalen-kara-biber.jpg'),
+(8, 'Broccoli', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 5, '1', 'stuk', 10, 'https://cdn.hofweb.nl/media/3394/c/000000001000000001HIGHRES2008-03-21-11.43.06.045000-broccoli-40917-large.jpg'),
+(9, 'Ui', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 5, '3', 'stuk', 3, 'https://cdn.webshopapp.com/shops/92230/files/417728620/uien-1-kg.jpg'),
+(10, 'Knoflook', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 3, '5', 'stuk', 3, 'https://www.honderdprocentnatural.nl/data/upload/Shop/images/knoflook-0.jpg'),
+(11, 'Saus', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 10, '1', 'liter', 250, 'https://www.zoetrecepten.nl/wp-content/uploads/2020/02/IMG_4233-1.jpg'),
+(12, 'Broodjes', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 5, '4', 'stuks', 150, 'https://kookmutsjes.com/wp-content/uploads/2018/03/Hamburger-broodjes-Kookmutsjes.png'),
+(13, 'Hamburger', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 2, '100', 'gram', 300, 'https://www.keepingitsimpleblog.com/wp-content/uploads/2022/07/shaped-hamburger-patties.jpg'),
+(14, 'Garnalen', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 30, '1', 'kg', 75, 'https://www.bessee.nl/wp-content/uploads/2022/07/Bessee_artikelnr_1310_en_1311.png');
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `boodschappenlijst`
+--
+
+CREATE TABLE `boodschappenlijst` (
+  `ID` int(255) NOT NULL,
+  `user_id` int(255) NOT NULL,
+  `artikel_id` int(255) NOT NULL,
+  `naam` varchar(255) NOT NULL,
+  `omschrijving` varchar(10000) NOT NULL,
+  `aantal` int(255) NOT NULL,
+  `prijs` int(255) NOT NULL,
+  `foto` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `boodschappenlijst`
+--
+
+INSERT INTO `boodschappenlijst` (`ID`, `user_id`, `artikel_id`, `naam`, `omschrijving`, `aantal`, `prijs`, `foto`) VALUES
+(80, 1, 12, 'Broodjes', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 1, 5, 'https://kookmutsjes.com/wp-content/uploads/2018/03/Hamburger-broodjes-Kookmutsjes.png'),
+(81, 1, 13, 'Hamburger', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 1, 2, 'https://www.keepingitsimpleblog.com/wp-content/uploads/2022/07/shaped-hamburger-patties.jpg'),
+(82, 1, 6, 'Zout', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 1, 10, 'https://www.fit.nl/wp-content/uploads/2018/12/zout-per-dag.jpg'),
+(83, 1, 7, 'Peper', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 1, 10, 'https://kruidenbestellen.com/bestanden/artikellen/175/groot/zwarte-peper-gemalen-kara-biber.jpg'),
+(84, 1, 5, 'Zonnebloem olie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 1, 10, 'https://static.ah.nl/dam/product/AHI_43545239373335363131?revLabel=1&rendition=400x400_JPG_Q85&fileType=binary'),
+(85, 1, 9, 'Ui', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 1, 5, 'https://cdn.webshopapp.com/shops/92230/files/417728620/uien-1-kg.jpg');
 
 -- --------------------------------------------------------
 
@@ -69,9 +100,9 @@ CREATE TABLE `gerecht` (
   `user_id` int(255) NOT NULL,
   `datum_toegevoegd` datetime NOT NULL DEFAULT current_timestamp(),
   `titel` varchar(255) NOT NULL,
-  `korte_omschrijving` varchar(255) NOT NULL,
-  `lange_omschrijving` varchar(255) NOT NULL,
-  `afbeelding` int(255) NOT NULL
+  `korte_omschrijving` varchar(5000) NOT NULL,
+  `lange_omschrijving` varchar(10000) NOT NULL,
+  `afbeelding` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -79,10 +110,10 @@ CREATE TABLE `gerecht` (
 --
 
 INSERT INTO `gerecht` (`ID`, `keuken_id`, `type_id`, `user_id`, `datum_toegevoegd`, `titel`, `korte_omschrijving`, `lange_omschrijving`, `afbeelding`) VALUES
-(1, 1, 6, 2, '2024-01-23 13:29:40', 'Chinese Kip', 'Kip met rijst', 'Kip met rijst en saus', 'https://natashaskitchen.com/wp-content/uploads/2020/07/General-Tsos-Chicken-4.jpg'),
-(2, 2, 6, 1, '2024-01-23 13:36:09', 'Big Whammy', 'Amerikaanse hamburger', 'Hamburger gemaakt volgens oud-Amerikaanse stijl', 'https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/M6HASPARCZHYNN4XTUYT7H6PTE.jpg&w=1440'),
-(3, 4, 5, 3, '2024-01-23 13:37:54', 'Broccoli', 'roergebakken broccoli', 'langere omschrijving van roergebakken broccoli', 'https://pbs.twimg.com/media/BwerM_hCcAAbvca.jpg:large'),
-(4, 3, 7, 2, '2024-01-23 13:40:52', 'Gebakken garnaal', 'gebakken vietnamese garnaal', 'garnaal berijd volgens authentiek vietnamees recept', 'https://www.okokorecepten.nl/i/recepten/kookboeken/2008/uit-eten-in-barcelona/garnalen-knoflook-peterselie-500.jpg');
+(1, 1, 6, 2, '2024-01-23 13:29:40', 'Chinese Kip', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'https://natashaskitchen.com/wp-content/uploads/2020/07/General-Tsos-Chicken-4.jpg'),
+(2, 2, 6, 1, '2024-01-23 13:36:09', 'Big Whammy', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/M6HASPARCZHYNN4XTUYT7H6PTE.jpg&w=1440'),
+(3, 4, 5, 3, '2024-01-23 13:37:54', 'Broccoli', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'https://pbs.twimg.com/media/BwerM_hCcAAbvca.jpg:large'),
+(4, 3, 7, 2, '2024-01-23 13:40:52', 'Gebakken Garnaal', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'https://www.okokorecepten.nl/i/recepten/kookboeken/2008/uit-eten-in-barcelona/garnalen-knoflook-peterselie-500.jpg');
 
 -- --------------------------------------------------------
 
@@ -115,7 +146,6 @@ INSERT INTO `gerecht_info` (`ID`, `record_type`, `gerecht_id`, `user_id`, `datum
 (8, 'O', 1, 2, '2024-01-23 14:24:25', NULL, 'Valt wel mee'),
 (9, 'W', 1, NULL, '2024-01-23 14:29:37', 3, NULL),
 (10, 'W', 1, NULL, '2024-01-23 14:29:50', 5, NULL),
-(11, 'F', 1, 1, '2024-01-23 14:33:17', NULL, NULL),
 (12, 'B', 2, NULL, '2024-01-23 14:48:44', 1, 'Verwarm de pan en voeg olie toe'),
 (13, 'B', 2, NULL, '2024-01-23 14:50:03', 2, 'Doe de hamburger in de pan en braad beide kanten tot een goudbruine kleur'),
 (14, 'B', 2, NULL, '2024-01-23 14:50:33', 3, 'Braad kort de broodjes en zet de hamburger in elkaar'),
@@ -128,7 +158,6 @@ INSERT INTO `gerecht_info` (`ID`, `record_type`, `gerecht_id`, `user_id`, `datum
 (21, 'B', 3, NULL, '2024-01-23 14:57:34', 2, 'Giet het water uit de pan'),
 (22, 'B', 3, NULL, '2024-01-23 14:57:54', 3, 'Voeg smaakstoffen toe en serveer'),
 (23, 'O', 3, 3, '2024-01-23 14:58:35', NULL, 'Smaakloos'),
-(24, 'O', 3, 2, '2024-01-23 14:58:56', NULL, 'Beetje flauwe smaak'),
 (25, 'W', 3, NULL, '2024-01-23 14:59:23', 2, NULL),
 (26, 'W', 3, NULL, '2024-01-23 14:59:27', 1, NULL),
 (27, 'B', 4, NULL, '2024-01-23 15:00:25', 1, 'Voorverwarm de pan en voeg olie toe'),
@@ -138,7 +167,12 @@ INSERT INTO `gerecht_info` (`ID`, `record_type`, `gerecht_id`, `user_id`, `datum
 (31, 'B', 4, NULL, '2024-01-23 15:02:37', 5, 'Serveer met dungesneden bosui'),
 (32, 'O', 4, 1, '2024-01-23 15:03:10', NULL, 'Ongeloofelijk lekker!'),
 (33, 'W', 4, NULL, '2024-01-23 15:03:34', 5, NULL),
-(34, 'F', 4, 1, '2024-01-23 15:04:13', NULL, NULL);
+(34, 'F', 4, 1, '2024-01-23 15:04:13', NULL, NULL),
+(57, 'W', 1, NULL, '2024-02-21 13:53:51', 5, NULL),
+(58, 'W', 1, NULL, '2024-02-23 10:01:30', 5, NULL),
+(60, 'W', 1, NULL, '2024-02-23 13:04:45', 3, NULL),
+(61, 'W', 1, NULL, '2024-02-23 13:04:46', 4, NULL),
+(62, 'W', 1, NULL, '2024-02-23 13:04:47', 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -174,7 +208,7 @@ INSERT INTO `ingredient` (`ID`, `gerecht_id`, `artikel_id`, `aantal`) VALUES
 (14, 3, 5, 1),
 (15, 3, 6, 1),
 (16, 3, 7, 1),
-(17, 4, 14, 2),
+(17, 4, 14, 1),
 (18, 4, 6, 1),
 (19, 4, 7, 1),
 (20, 4, 5, 1),
@@ -240,6 +274,14 @@ ALTER TABLE `artikel`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexen voor tabel `boodschappenlijst`
+--
+ALTER TABLE `boodschappenlijst`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `boodschappen_artikel` (`artikel_id`),
+  ADD KEY `boodschappen_user` (`user_id`);
+
+--
 -- Indexen voor tabel `gerecht`
 --
 ALTER TABLE `gerecht`
@@ -287,6 +329,12 @@ ALTER TABLE `artikel`
   MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
+-- AUTO_INCREMENT voor een tabel `boodschappenlijst`
+--
+ALTER TABLE `boodschappenlijst`
+  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+
+--
 -- AUTO_INCREMENT voor een tabel `gerecht`
 --
 ALTER TABLE `gerecht`
@@ -296,7 +344,7 @@ ALTER TABLE `gerecht`
 -- AUTO_INCREMENT voor een tabel `gerecht_info`
 --
 ALTER TABLE `gerecht_info`
-  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT voor een tabel `ingredient`
@@ -319,6 +367,13 @@ ALTER TABLE `user`
 --
 -- Beperkingen voor geëxporteerde tabellen
 --
+
+--
+-- Beperkingen voor tabel `boodschappenlijst`
+--
+ALTER TABLE `boodschappenlijst`
+  ADD CONSTRAINT `boodschappen_artikel` FOREIGN KEY (`artikel_id`) REFERENCES `artikel` (`ID`),
+  ADD CONSTRAINT `boodschappen_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`ID`);
 
 --
 -- Beperkingen voor tabel `gerecht`

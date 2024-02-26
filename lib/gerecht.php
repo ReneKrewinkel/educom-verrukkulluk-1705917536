@@ -123,5 +123,4 @@ class gerecht
 
         return ($fav['COUNT(*)'] > 0);
     }
-    
 }

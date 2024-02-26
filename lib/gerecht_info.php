@@ -70,6 +70,7 @@ class gerecht_info
         $sql = "DELETE FROM gerecht_info WHERE user_id = $user_id AND gerecht_id= $gerecht_id AND record_type = 'F'";
 
         $result = mysqli_query($this->connection, $sql);
+        
         if ($result) {
             $user = $this->selecteerUser($user_id);
             echo "Succesfully removed from favorites, " . $user["user_name"] . "!";
@@ -86,7 +87,8 @@ class gerecht_info
         $result = mysqli_query($this->connection, $sql);
 
         if ($result) {
-            echo "Rated " . $nummeriekveld . " stars!";
+            return true;
         }
+        return false;
     }
 }
