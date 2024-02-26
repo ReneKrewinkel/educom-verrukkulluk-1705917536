@@ -66,6 +66,7 @@ try {
         $gerecht_id= $_POST['gerecht_id'];
         $boodschappenlijst->boodschappenToevoegen($gerecht_id, $user_id);
     }
+    
     switch ($action) {
 
         case "homepage": {
